@@ -1,0 +1,53 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ClientAppSoapServiceService WSDL service -->
+
+  <service name="ClientAppSoapService" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://logic.project.etf"/>
+      <parameter name="wsdlServiceElement" value="ClientAppSoapServiceService"/>
+      <parameter name="schemaQualified" value="http://logic.project.etf,http://client.model.project.etf,http://container.model.project.etf"/>
+      <parameter name="wsdlServicePort" value="ClientAppSoapService"/>
+      <parameter name="className" value="etf.project.logic.ClientAppSoapServiceSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="ClientAppSoapService"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="policeCheck" qname="operNS:policeCheck" xmlns:operNS="http://logic.project.etf" returnQName="retNS:policeCheckReturn" xmlns:retNS="http://logic.project.etf" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:person" xmlns:pns="http://logic.project.etf" type="tns:Client" xmlns:tns="http://client.model.project.etf"/>
+        <parameter qname="pns:client" xmlns:pns="http://logic.project.etf" type="tns:ClientContainer" xmlns:tns="http://container.model.project.etf"/>
+      </operation>
+      <operation name="customsCheck" qname="operNS:customsCheck" xmlns:operNS="http://logic.project.etf" returnQName="retNS:customsCheckReturn" xmlns:retNS="http://logic.project.etf" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:data" xmlns:pns="http://logic.project.etf" type="tns:base64Binary" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:documentName" xmlns:pns="http://logic.project.etf" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="checkTerminal" qname="operNS:checkTerminal" xmlns:operNS="http://logic.project.etf" returnQName="retNS:checkTerminalReturn" xmlns:retNS="http://logic.project.etf" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:client" xmlns:pns="http://logic.project.etf" type="tns:ClientContainer" xmlns:tns="http://container.model.project.etf"/>
+      </operation>
+      <parameter name="allowedMethods" value="checkTerminal customsCheck policeCheck"/>
+
+      <typeMapping
+        xmlns:ns="http://client.model.project.etf"
+        qname="ns:Client"
+        type="java:etf.project.model.client.Client"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://container.model.project.etf"
+        qname="ns:ClientContainer"
+        type="java:etf.project.model.container.ClientContainer"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

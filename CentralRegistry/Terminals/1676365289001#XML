@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="17.0.4.1" class="java.beans.XMLDecoder">
+ <object class="etf.project.model.customsterminal.CustomsTerminal">
+  <void property="entrances">
+   <array class="etf.project.model.customsterminal.Gateway" length="2">
+    <void index="0">
+     <object class="etf.project.model.customsterminal.Gateway">
+      <void property="open">
+       <boolean>true</boolean>
+      </void>
+     </object>
+    </void>
+    <void index="1">
+     <object class="etf.project.model.customsterminal.Gateway">
+      <void property="idGateway">
+       <int>1</int>
+      </void>
+      <void property="open">
+       <boolean>true</boolean>
+      </void>
+     </object>
+    </void>
+   </array>
+  </void>
+  <void property="exits">
+   <array class="etf.project.model.customsterminal.Gateway" length="4">
+    <void index="0">
+     <object class="etf.project.model.customsterminal.Gateway">
+      <void property="open">
+       <boolean>true</boolean>
+      </void>
+     </object>
+    </void>
+    <void index="1">
+     <object class="etf.project.model.customsterminal.Gateway">
+      <void property="idGateway">
+       <int>1</int>
+      </void>
+      <void property="open">
+       <boolean>true</boolean>
+      </void>
+     </object>
+    </void>
+    <void index="2">
+     <object class="etf.project.model.customsterminal.Gateway">
+      <void property="idGateway">
+       <int>2</int>
+      </void>
+      <void property="open">
+       <boolean>true</boolean>
+      </void>
+     </object>
+    </void>
+    <void index="3">
+     <object class="etf.project.model.customsterminal.Gateway">
+      <void property="idGateway">
+       <int>3</int>
+      </void>
+      <void property="open">
+       <boolean>true</boolean>
+      </void>
+     </object>
+    </void>
+   </array>
+  </void>
+  <void property="idCustomsTerminal">
+   <long>1676365289001</long>
+  </void>
+  <void property="numberOfEntrances">
+   <int>2</int>
+  </void>
+  <void property="numberOfExits">
+   <int>4</int>
+  </void>
+  <void property="terminalName">
+   <string>Prijedor</string>
+  </void>
+  <void property="terminalOpen">
+   <boolean>true</boolean>
+  </void>
+ </object>
+</java>

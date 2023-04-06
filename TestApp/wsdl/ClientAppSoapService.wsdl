@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://logic.project.etf" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://logic.project.etf" xmlns:intf="http://logic.project.etf" xmlns:tns1="http://client.model.project.etf" xmlns:tns2="http://container.model.project.etf" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://logic.project.etf" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://container.model.project.etf"/>
+   <import namespace="http://client.model.project.etf"/>
+   <element name="policeCheck">
+    <complexType>
+     <sequence>
+      <element name="person" type="tns1:Client"/>
+      <element name="client" type="tns2:ClientContainer"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="policeCheckResponse">
+    <complexType>
+     <sequence>
+      <element name="policeCheckReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="customsCheck">
+    <complexType>
+     <sequence>
+      <element name="data" type="xsd:base64Binary"/>
+      <element name="documentName" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="customsCheckResponse">
+    <complexType>
+     <sequence>
+      <element name="customsCheckReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="checkTerminal">
+    <complexType>
+     <sequence>
+      <element name="client" type="tns2:ClientContainer"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="checkTerminalResponse">
+    <complexType>
+     <sequence>
+      <element name="checkTerminalReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://client.model.project.etf" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://container.model.project.etf"/>
+   <complexType name="Client">
+    <sequence>
+     <element name="documentNumber" nillable="true" type="xsd:string"/>
+     <element name="lastName" nillable="true" type="xsd:string"/>
+     <element name="name" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://container.model.project.etf" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://client.model.project.etf"/>
+   <complexType name="ClientContainer">
+    <sequence>
+     <element name="id_gateway" type="xsd:int"/>
+     <element name="occupation" nillable="true" type="xsd:string"/>
+     <element name="terminalName" nillable="true" type="xsd:string"/>
+     <element name="type" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="customsCheckResponse">
+
+      <wsdl:part element="impl:customsCheckResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="policeCheckRequest">
+
+      <wsdl:part element="impl:policeCheck" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="customsCheckRequest">
+
+      <wsdl:part element="impl:customsCheck" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="checkTerminalRequest">
+
+      <wsdl:part element="impl:checkTerminal" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="policeCheckResponse">
+
+      <wsdl:part element="impl:policeCheckResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="checkTerminalResponse">
+
+      <wsdl:part element="impl:checkTerminalResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="ClientAppSoapService">
+
+      <wsdl:operation name="policeCheck">
+
+         <wsdl:input message="impl:policeCheckRequest" name="policeCheckRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:policeCheckResponse" name="policeCheckResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="customsCheck">
+
+         <wsdl:input message="impl:customsCheckRequest" name="customsCheckRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:customsCheckResponse" name="customsCheckResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="checkTerminal">
+
+         <wsdl:input message="impl:checkTerminalRequest" name="checkTerminalRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:checkTerminalResponse" name="checkTerminalResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="ClientAppSoapServiceSoapBinding" type="impl:ClientAppSoapService">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="policeCheck">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="policeCheckRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="policeCheckResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="customsCheck">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="customsCheckRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="customsCheckResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="checkTerminal">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="checkTerminalRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="checkTerminalResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="ClientAppSoapServiceService">
+
+      <wsdl:port binding="impl:ClientAppSoapServiceSoapBinding" name="ClientAppSoapService">
+
+         <wsdlsoap:address location="http://localhost:9000/ClientApp/services/ClientAppSoapService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

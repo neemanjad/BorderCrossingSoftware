@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from CentralRegistryServiceService WSDL service -->
+
+  <service name="CentralRegistryService" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://service.project.etf"/>
+      <parameter name="wsdlServiceElement" value="CentralRegistryServiceService"/>
+      <parameter name="schemaQualified" value="http://customsterminal.model.project.etf,http://passenger.model.project.etf,http://service.project.etf,http://container.model.project.etf"/>
+      <parameter name="wsdlServicePort" value="CentralRegistryService"/>
+      <parameter name="className" value="etf.project.service.CentralRegistryService"/>
+      <parameter name="wsdlPortType" value="CentralRegistryService"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://service.project.etf" xmlns:retNS="http://service.project.etf" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="addTerminal" qname="operNS:addTerminal" returnQName="retNS:addTerminalReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://service.project.etf" xmlns:tns="http://customsterminal.model.project.etf" qname="pns:terminal" type="tns:CustomsTerminal"/>
+      </operation>
+      <operation xmlns:operNS="http://service.project.etf" xmlns:retNS="http://service.project.etf" xmlns:rtns="http://customsterminal.model.project.etf" name="getTerminal" qname="operNS:getTerminal" returnQName="retNS:getTerminalReturn" returnType="rtns:CustomsTerminal" soapAction="">
+        <parameter xmlns:pns="http://service.project.etf" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:idTerminal" type="tns:long"/>
+      </operation>
+      <operation xmlns:operNS="http://service.project.etf" xmlns:retNS="http://service.project.etf" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="deleteTerminal" qname="operNS:deleteTerminal" returnQName="retNS:deleteTerminalReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://service.project.etf" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:idTerminal" type="tns:long"/>
+      </operation>
+      <operation xmlns:operNS="http://service.project.etf" xmlns:retNS="http://service.project.etf" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="updateTerminal" qname="operNS:updateTerminal" returnQName="retNS:updateTerminalReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://service.project.etf" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:idTerminal" type="tns:long"/>
+        <parameter xmlns:pns="http://service.project.etf" xmlns:tns="http://customsterminal.model.project.etf" qname="pns:terminal" type="tns:CustomsTerminal"/>
+      </operation>
+      <operation xmlns:operNS="http://service.project.etf" name="logLogin" qname="operNS:logLogin" soapAction="">
+        <parameter xmlns:pns="http://service.project.etf" xmlns:tns="http://container.model.project.etf" qname="pns:container" type="tns:CustomsContainer"/>
+      </operation>
+      <operation xmlns:operNS="http://service.project.etf" name="logCheckOut" qname="operNS:logCheckOut" soapAction="">
+        <parameter xmlns:pns="http://service.project.etf" xmlns:tns="http://container.model.project.etf" qname="pns:container" type="tns:CustomsContainer"/>
+      </operation>
+      <operation xmlns:operNS="http://service.project.etf" xmlns:retNS="http://service.project.etf" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="isTerminalRunning" qname="operNS:isTerminalRunning" returnQName="retNS:isTerminalRunningReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://service.project.etf" xmlns:tns="http://container.model.project.etf" qname="pns:container" type="tns:CustomsContainer"/>
+      </operation>
+      <operation xmlns:operNS="http://service.project.etf" xmlns:retNS="http://service.project.etf" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="addCheckedPassenger" qname="operNS:addCheckedPassenger" returnQName="retNS:addCheckedPassengerReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://service.project.etf" xmlns:tns="http://passenger.model.project.etf" qname="pns:passenger" type="tns:Passenger"/>
+        <parameter xmlns:pns="http://service.project.etf" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:terminalName" type="tns:string"/>
+        <parameter xmlns:pns="http://service.project.etf" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:direction" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://service.project.etf" xmlns:retNS="http://service.project.etf" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="startRunningTerminal" qname="operNS:startRunningTerminal" returnQName="retNS:startRunningTerminalReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://service.project.etf" xmlns:tns="http://container.model.project.etf" qname="pns:container" type="tns:CustomsContainer"/>
+      </operation>
+      <operation xmlns:operNS="http://service.project.etf" xmlns:retNS="http://service.project.etf" xmlns:rtns="http://container.model.project.etf" name="getCheckedPassengers" qname="operNS:getCheckedPassengers" returnQName="retNS:getCheckedPassengersReturn" returnType="rtns:PassengerContainer" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://service.project.etf" xmlns:retNS="http://service.project.etf" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="stopRunningTerminal" qname="operNS:stopRunningTerminal" returnQName="retNS:stopRunningTerminalReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://service.project.etf" xmlns:tns="http://container.model.project.etf" qname="pns:container" type="tns:CustomsContainer"/>
+      </operation>
+      <operation xmlns:operNS="http://service.project.etf" xmlns:retNS="http://service.project.etf" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="isTerminalAndGatewayAvailable" qname="operNS:isTerminalAndGatewayAvailable" returnQName="retNS:isTerminalAndGatewayAvailableReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://service.project.etf" xmlns:tns="http://container.model.project.etf" qname="pns:container" type="tns:CustomsContainer"/>
+        <parameter xmlns:pns="http://service.project.etf" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:client" type="tns:boolean"/>
+      </operation>
+      <operation xmlns:operNS="http://service.project.etf" xmlns:retNS="http://service.project.etf" xmlns:rtns="http://passenger.model.project.etf" name="getPassengersOnWarrants" qname="operNS:getPassengersOnWarrants" returnQName="retNS:getPassengersOnWarrantsReturn" returnType="rtns:Passenger" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://service.project.etf" xmlns:retNS="http://service.project.etf" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="addPassengerOnWarrant" qname="operNS:addPassengerOnWarrant" returnQName="retNS:addPassengerOnWarrantReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://service.project.etf" xmlns:tns="http://passenger.model.project.etf" qname="pns:passenger" type="tns:Passenger"/>
+      </operation>
+      <parameter name="allowedMethods" value="getTerminal stopRunningTerminal isTerminalAndGatewayAvailable isTerminalRunning getPassengersOnWarrants updateTerminal startRunningTerminal getCheckedPassengers addTerminal addCheckedPassenger logCheckOut logLogin deleteTerminal addPassengerOnWarrant"/>
+
+      <typeMapping xmlns:ns="http://container.model.project.etf" qname="ns:CustomsContainer" type="java:etf.project.model.container.CustomsContainer" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://passenger.model.project.etf" qname="ns:Passenger" type="java:etf.project.model.passenger.Passenger" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://container.model.project.etf" qname="ns:PassengerContainer" type="java:etf.project.model.container.PassengerContainer" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://customsterminal.model.project.etf" qname="ns:Gateway" type="java:etf.project.model.customsterminal.Gateway" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <arrayMapping xmlns:ns="http://service.project.etf" xmlns:cmp-ns="http://customsterminal.model.project.etf" qname="ns:ArrayOf_tns1_Gateway" type="java:etf.project.model.customsterminal.Gateway[]" innerType="cmp-ns:Gateway" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://customsterminal.model.project.etf" qname="ns:CustomsTerminal" type="java:etf.project.model.customsterminal.CustomsTerminal" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+  </service>
+</deployment>

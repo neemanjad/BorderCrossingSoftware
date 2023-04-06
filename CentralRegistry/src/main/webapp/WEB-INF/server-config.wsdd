@@ -1,0 +1,110 @@
+<ns1:deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns1="http://xml.apache.org/axis/wsdd/">
+ <ns1:globalConfiguration>
+  <ns1:parameter name="sendMultiRefs" value="true"/>
+  <ns1:parameter name="disablePrettyXML" value="true"/>
+  <ns1:parameter name="adminPassword" value="admin"/>
+  <ns1:parameter name="attachments.Directory" value="C:\Users\PC\Desktop\Fakultet\Java\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\CentralRegistry\WEB-INF\attachments"/>
+  <ns1:parameter name="dotNetSoapEncFix" value="true"/>
+  <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
+  <ns1:parameter name="sendXMLDeclaration" value="true"/>
+  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <ns1:parameter name="sendXsiTypes" value="true"/>
+  <ns1:requestFlow>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="session"/>
+   </ns1:handler>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="request"/>
+    <ns1:parameter name="extension" value=".jwr"/>
+   </ns1:handler>
+  </ns1:requestFlow>
+ </ns1:globalConfiguration>
+ <ns1:handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper"/>
+ <ns1:handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
+ <ns1:handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
+ <ns1:service name="AdminService" provider="java:MSG">
+  <ns1:parameter name="allowedMethods" value="AdminService"/>
+  <ns1:parameter name="enableRemoteAdmin" value="false"/>
+  <ns1:parameter name="className" value="org.apache.axis.utils.Admin"/>
+  <ns1:namespace>http://xml.apache.org/axis/wsdd/</ns1:namespace>
+ </ns1:service>
+ <ns1:service name="Version" provider="java:RPC">
+  <ns1:parameter name="allowedMethods" value="getVersion"/>
+  <ns1:parameter name="className" value="org.apache.axis.Version"/>
+ </ns1:service>
+ <ns1:service name="CentralRegistryService" provider="java:RPC" style="wrapped" use="literal">
+  <ns2:operation name="addTerminal" qname="ns1:addTerminal" returnQName="ns1:addTerminalReturn" returnType="xsd:boolean" soapAction="" xmlns:ns1="http://service.project.etf" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://xml.apache.org/axis/wsdd/">
+   <ns3:parameter qname="ns1:terminal" type="ns2:CustomsTerminal" xmlns:ns2="http://customsterminal.model.project.etf" xmlns:ns3="http://xml.apache.org/axis/wsdd/"/>
+  </ns2:operation>
+  <ns1:operation name="getTerminal" qname="ns3:getTerminal" returnQName="ns3:getTerminalReturn" returnType="ns4:CustomsTerminal" soapAction="" xmlns:ns3="http://service.project.etf" xmlns:ns4="http://customsterminal.model.project.etf">
+   <ns1:parameter qname="ns3:idTerminal" type="xsd:long" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="deleteTerminal" qname="ns5:deleteTerminal" returnQName="ns5:deleteTerminalReturn" returnType="xsd:boolean" soapAction="" xmlns:ns5="http://service.project.etf" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns5:idTerminal" type="xsd:long"/>
+  </ns1:operation>
+  <ns1:operation name="updateTerminal" qname="ns6:updateTerminal" returnQName="ns6:updateTerminalReturn" returnType="xsd:boolean" soapAction="" xmlns:ns6="http://service.project.etf" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns6:idTerminal" type="xsd:long"/>
+   <ns1:parameter qname="ns6:terminal" type="ns7:CustomsTerminal" xmlns:ns7="http://customsterminal.model.project.etf"/>
+  </ns1:operation>
+  <ns1:operation name="logLogin" qname="ns8:logLogin" soapAction="" xmlns:ns8="http://service.project.etf">
+   <ns1:parameter qname="ns8:container" type="ns9:CustomsContainer" xmlns:ns9="http://container.model.project.etf"/>
+  </ns1:operation>
+  <ns1:operation name="logCheckOut" qname="ns10:logCheckOut" soapAction="" xmlns:ns10="http://service.project.etf">
+   <ns1:parameter qname="ns10:container" type="ns11:CustomsContainer" xmlns:ns11="http://container.model.project.etf"/>
+  </ns1:operation>
+  <ns1:operation name="isTerminalRunning" qname="ns12:isTerminalRunning" returnQName="ns12:isTerminalRunningReturn" returnType="xsd:boolean" soapAction="" xmlns:ns12="http://service.project.etf" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns12:container" type="ns13:CustomsContainer" xmlns:ns13="http://container.model.project.etf"/>
+  </ns1:operation>
+  <ns1:operation name="addCheckedPassenger" qname="ns14:addCheckedPassenger" returnQName="ns14:addCheckedPassengerReturn" returnType="xsd:boolean" soapAction="" xmlns:ns14="http://service.project.etf" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns14:passenger" type="ns15:Passenger" xmlns:ns15="http://passenger.model.project.etf"/>
+   <ns1:parameter qname="ns14:terminalName" type="xsd:string"/>
+   <ns1:parameter qname="ns14:direction" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="startRunningTerminal" qname="ns16:startRunningTerminal" returnQName="ns16:startRunningTerminalReturn" returnType="xsd:boolean" soapAction="" xmlns:ns16="http://service.project.etf" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns16:container" type="ns17:CustomsContainer" xmlns:ns17="http://container.model.project.etf"/>
+  </ns1:operation>
+  <ns1:operation name="getCheckedPassengers" qname="ns18:getCheckedPassengers" returnQName="ns18:getCheckedPassengersReturn" returnType="ns19:PassengerContainer" soapAction="" xmlns:ns18="http://service.project.etf" xmlns:ns19="http://container.model.project.etf"/>
+  <ns1:operation name="stopRunningTerminal" qname="ns20:stopRunningTerminal" returnQName="ns20:stopRunningTerminalReturn" returnType="xsd:boolean" soapAction="" xmlns:ns20="http://service.project.etf" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns20:container" type="ns21:CustomsContainer" xmlns:ns21="http://container.model.project.etf"/>
+  </ns1:operation>
+  <ns1:operation name="isTerminalAndGatewayAvailable" qname="ns22:isTerminalAndGatewayAvailable" returnQName="ns22:isTerminalAndGatewayAvailableReturn" returnType="xsd:boolean" soapAction="" xmlns:ns22="http://service.project.etf" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns22:container" type="ns23:CustomsContainer" xmlns:ns23="http://container.model.project.etf"/>
+   <ns1:parameter qname="ns22:client" type="xsd:boolean"/>
+  </ns1:operation>
+  <ns1:operation name="getPassengersOnWarrants" qname="ns24:getPassengersOnWarrants" returnQName="ns24:getPassengersOnWarrantsReturn" returnType="ns25:Passenger" soapAction="" xmlns:ns24="http://service.project.etf" xmlns:ns25="http://passenger.model.project.etf"/>
+  <ns1:operation name="addPassengerOnWarrant" qname="ns26:addPassengerOnWarrant" returnQName="ns26:addPassengerOnWarrantReturn" returnType="xsd:boolean" soapAction="" xmlns:ns26="http://service.project.etf" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns26:passenger" type="ns27:Passenger" xmlns:ns27="http://passenger.model.project.etf"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="getTerminal stopRunningTerminal isTerminalAndGatewayAvailable isTerminalRunning getPassengersOnWarrants updateTerminal startRunningTerminal getCheckedPassengers addTerminal addCheckedPassenger logCheckOut logLogin deleteTerminal addPassengerOnWarrant"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="CentralRegistryService"/>
+  <ns1:parameter name="className" value="etf.project.service.CentralRegistryService"/>
+  <ns1:parameter name="wsdlServicePort" value="CentralRegistryService"/>
+  <ns1:parameter name="schemaQualified" value="http://customsterminal.model.project.etf,http://passenger.model.project.etf,http://service.project.etf,http://container.model.project.etf"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://service.project.etf"/>
+  <ns1:parameter name="wsdlServiceElement" value="CentralRegistryServiceService"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns28:CustomsContainer" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:etf.project.model.container.CustomsContainer" xmlns:ns28="http://container.model.project.etf"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns29:Passenger" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:etf.project.model.passenger.Passenger" xmlns:ns29="http://passenger.model.project.etf"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns30:PassengerContainer" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:etf.project.model.container.PassengerContainer" xmlns:ns30="http://container.model.project.etf"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns31:Gateway" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:etf.project.model.customsterminal.Gateway" xmlns:ns31="http://customsterminal.model.project.etf"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns32:CustomsTerminal" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:etf.project.model.customsterminal.CustomsTerminal" xmlns:ns32="http://customsterminal.model.project.etf"/>
+  <ns1:arrayMapping innerType="ns34:Gateway" languageSpecificType="java:etf.project.model.customsterminal.Gateway[]" qname="ns33:ArrayOf_tns1_Gateway" xmlns:ns33="http://service.project.etf" xmlns:ns34="http://customsterminal.model.project.etf"/>
+ </ns1:service>
+ <ns1:transport name="http">
+  <ns1:requestFlow>
+   <ns1:handler type="URLMapper"/>
+   <ns1:handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler"/>
+  </ns1:requestFlow>
+  <ns1:parameter name="qs:list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs:wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+  <ns1:parameter name="qs.list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs.method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs:method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs.wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+ </ns1:transport>
+ <ns1:transport name="local">
+  <ns1:responseFlow>
+   <ns1:handler type="LocalResponder"/>
+  </ns1:responseFlow>
+ </ns1:transport>
+</ns1:deployment>

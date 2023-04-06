@@ -1,0 +1,10 @@
+eclipse.preferences.version=1
+encoding//src/main/java/etf/project/model/container/CustomsContainer.java=UTF-8
+encoding//src/main/java/etf/project/model/container/PassengerContainer.java=UTF-8
+encoding//src/main/java/etf/project/model/customsterminal/CustomsTerminal.java=UTF-8
+encoding//src/main/java/etf/project/model/customsterminal/Gateway.java=UTF-8
+encoding//src/main/java/etf/project/model/passenger/Passenger.java=UTF-8
+encoding//src/main/java/etf/project/service/CentralRegistryService.java=UTF-8
+encoding//src/main/java/etf/project/service/CentralRegistryServiceService.java=UTF-8
+encoding//src/main/java/etf/project/service/CentralRegistryServiceServiceLocator.java=UTF-8
+encoding//src/main/java/etf/project/service/CentralRegistryServiceSoapBindingStub.java=UTF-8

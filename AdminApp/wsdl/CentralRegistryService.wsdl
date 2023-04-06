@@ -1,0 +1,924 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://service.project.etf" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://service.project.etf" xmlns:intf="http://service.project.etf" xmlns:tns1="http://customsterminal.model.project.etf" xmlns:tns2="http://container.model.project.etf" xmlns:tns3="http://passenger.model.project.etf" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://service.project.etf" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://container.model.project.etf"/>
+   <import namespace="http://passenger.model.project.etf"/>
+   <import namespace="http://customsterminal.model.project.etf"/>
+   <element name="addTerminal">
+    <complexType>
+     <sequence>
+      <element name="terminal" type="tns1:CustomsTerminal"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ArrayOf_tns1_Gateway">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns1:Gateway"/>
+    </sequence>
+   </complexType>
+   <element name="addTerminalResponse">
+    <complexType>
+     <sequence>
+      <element name="addTerminalReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getTerminal">
+    <complexType>
+     <sequence>
+      <element name="idTerminal" type="xsd:long"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getTerminalResponse">
+    <complexType>
+     <sequence>
+      <element name="getTerminalReturn" type="tns1:CustomsTerminal"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteTerminal">
+    <complexType>
+     <sequence>
+      <element name="idTerminal" type="xsd:long"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteTerminalResponse">
+    <complexType>
+     <sequence>
+      <element name="deleteTerminalReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updateTerminal">
+    <complexType>
+     <sequence>
+      <element name="idTerminal" type="xsd:long"/>
+      <element name="terminal" type="tns1:CustomsTerminal"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updateTerminalResponse">
+    <complexType>
+     <sequence>
+      <element name="updateTerminalReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="logLogin">
+    <complexType>
+     <sequence>
+      <element name="container" type="tns2:CustomsContainer"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="logLoginResponse">
+    <complexType/>
+   </element>
+   <element name="logCheckOut">
+    <complexType>
+     <sequence>
+      <element name="container" type="tns2:CustomsContainer"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="logCheckOutResponse">
+    <complexType/>
+   </element>
+   <element name="isTerminalRunning">
+    <complexType>
+     <sequence>
+      <element name="container" type="tns2:CustomsContainer"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="isTerminalRunningResponse">
+    <complexType>
+     <sequence>
+      <element name="isTerminalRunningReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addCheckedPassenger">
+    <complexType>
+     <sequence>
+      <element name="passenger" type="tns3:Passenger"/>
+      <element name="terminalName" type="xsd:string"/>
+      <element name="direction" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addCheckedPassengerResponse">
+    <complexType>
+     <sequence>
+      <element name="addCheckedPassengerReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="startRunningTerminal">
+    <complexType>
+     <sequence>
+      <element name="container" type="tns2:CustomsContainer"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="startRunningTerminalResponse">
+    <complexType>
+     <sequence>
+      <element name="startRunningTerminalReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getCheckedPassengers">
+    <complexType/>
+   </element>
+   <element name="getCheckedPassengersResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getCheckedPassengersReturn" type="tns2:PassengerContainer"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="stopRunningTerminal">
+    <complexType>
+     <sequence>
+      <element name="container" type="tns2:CustomsContainer"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="stopRunningTerminalResponse">
+    <complexType>
+     <sequence>
+      <element name="stopRunningTerminalReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="isTerminalAndGatewayAvailable">
+    <complexType>
+     <sequence>
+      <element name="container" type="tns2:CustomsContainer"/>
+      <element name="client" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="isTerminalAndGatewayAvailableResponse">
+    <complexType>
+     <sequence>
+      <element name="isTerminalAndGatewayAvailableReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getPassengersOnWarrants">
+    <complexType/>
+   </element>
+   <element name="getPassengersOnWarrantsResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getPassengersOnWarrantsReturn" type="tns3:Passenger"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addPassengerOnWarrant">
+    <complexType>
+     <sequence>
+      <element name="passenger" type="tns3:Passenger"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addPassengerOnWarrantResponse">
+    <complexType>
+     <sequence>
+      <element name="addPassengerOnWarrantReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://customsterminal.model.project.etf" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://container.model.project.etf"/>
+   <import namespace="http://service.project.etf"/>
+   <import namespace="http://passenger.model.project.etf"/>
+   <complexType name="Gateway">
+    <sequence>
+     <element name="customs" type="xsd:boolean"/>
+     <element name="idGateway" type="xsd:int"/>
+     <element name="open" type="xsd:boolean"/>
+     <element name="police" type="xsd:boolean"/>
+    </sequence>
+   </complexType>
+   <complexType name="CustomsTerminal">
+    <sequence>
+     <element name="entrances" nillable="true" type="impl:ArrayOf_tns1_Gateway"/>
+     <element name="exits" nillable="true" type="impl:ArrayOf_tns1_Gateway"/>
+     <element name="idCustomsTerminal" type="xsd:long"/>
+     <element name="numberOfEntrances" type="xsd:int"/>
+     <element name="numberOfExits" type="xsd:int"/>
+     <element name="terminalName" nillable="true" type="xsd:string"/>
+     <element name="terminalOpen" type="xsd:boolean"/>
+     <element name="terminalRunning" type="xsd:boolean"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://container.model.project.etf" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://service.project.etf"/>
+   <import namespace="http://passenger.model.project.etf"/>
+   <import namespace="http://customsterminal.model.project.etf"/>
+   <complexType name="CustomsContainer">
+    <sequence>
+     <element name="id_gateway" type="xsd:int"/>
+     <element name="occupation" nillable="true" type="xsd:string"/>
+     <element name="terminalName" nillable="true" type="xsd:string"/>
+     <element name="type" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="PassengerContainer">
+    <sequence>
+     <element name="dateAsString" nillable="true" type="xsd:string"/>
+     <element name="direction" nillable="true" type="xsd:string"/>
+     <element name="passenger" nillable="true" type="tns3:Passenger"/>
+     <element name="terminalName" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://passenger.model.project.etf" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://container.model.project.etf"/>
+   <import namespace="http://service.project.etf"/>
+   <import namespace="http://customsterminal.model.project.etf"/>
+   <complexType name="Passenger">
+    <sequence>
+     <element name="documentNumber" nillable="true" type="xsd:string"/>
+     <element name="lastName" nillable="true" type="xsd:string"/>
+     <element name="name" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="addTerminalResponse">
+
+      <wsdl:part element="impl:addTerminalResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="startRunningTerminalRequest">
+
+      <wsdl:part element="impl:startRunningTerminal" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="isTerminalAndGatewayAvailableResponse">
+
+      <wsdl:part element="impl:isTerminalAndGatewayAvailableResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteTerminalRequest">
+
+      <wsdl:part element="impl:deleteTerminal" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateTerminalResponse">
+
+      <wsdl:part element="impl:updateTerminalResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="logLoginResponse">
+
+      <wsdl:part element="impl:logLoginResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="stopRunningTerminalResponse">
+
+      <wsdl:part element="impl:stopRunningTerminalResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="logLoginRequest">
+
+      <wsdl:part element="impl:logLogin" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getCheckedPassengersRequest">
+
+      <wsdl:part element="impl:getCheckedPassengers" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getCheckedPassengersResponse">
+
+      <wsdl:part element="impl:getCheckedPassengersResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="logCheckOutRequest">
+
+      <wsdl:part element="impl:logCheckOut" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getPassengersOnWarrantsResponse">
+
+      <wsdl:part element="impl:getPassengersOnWarrantsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="logCheckOutResponse">
+
+      <wsdl:part element="impl:logCheckOutResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addTerminalRequest">
+
+      <wsdl:part element="impl:addTerminal" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="startRunningTerminalResponse">
+
+      <wsdl:part element="impl:startRunningTerminalResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteTerminalResponse">
+
+      <wsdl:part element="impl:deleteTerminalResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="isTerminalRunningResponse">
+
+      <wsdl:part element="impl:isTerminalRunningResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="isTerminalAndGatewayAvailableRequest">
+
+      <wsdl:part element="impl:isTerminalAndGatewayAvailable" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addCheckedPassengerResponse">
+
+      <wsdl:part element="impl:addCheckedPassengerResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addPassengerOnWarrantRequest">
+
+      <wsdl:part element="impl:addPassengerOnWarrant" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateTerminalRequest">
+
+      <wsdl:part element="impl:updateTerminal" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="isTerminalRunningRequest">
+
+      <wsdl:part element="impl:isTerminalRunning" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addCheckedPassengerRequest">
+
+      <wsdl:part element="impl:addCheckedPassenger" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addPassengerOnWarrantResponse">
+
+      <wsdl:part element="impl:addPassengerOnWarrantResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getTerminalRequest">
+
+      <wsdl:part element="impl:getTerminal" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getTerminalResponse">
+
+      <wsdl:part element="impl:getTerminalResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="stopRunningTerminalRequest">
+
+      <wsdl:part element="impl:stopRunningTerminal" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getPassengersOnWarrantsRequest">
+
+      <wsdl:part element="impl:getPassengersOnWarrants" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="CentralRegistryService">
+
+      <wsdl:operation name="addTerminal">
+
+         <wsdl:input message="impl:addTerminalRequest" name="addTerminalRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:addTerminalResponse" name="addTerminalResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getTerminal">
+
+         <wsdl:input message="impl:getTerminalRequest" name="getTerminalRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getTerminalResponse" name="getTerminalResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteTerminal">
+
+         <wsdl:input message="impl:deleteTerminalRequest" name="deleteTerminalRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:deleteTerminalResponse" name="deleteTerminalResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateTerminal">
+
+         <wsdl:input message="impl:updateTerminalRequest" name="updateTerminalRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:updateTerminalResponse" name="updateTerminalResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="logLogin">
+
+         <wsdl:input message="impl:logLoginRequest" name="logLoginRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:logLoginResponse" name="logLoginResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="logCheckOut">
+
+         <wsdl:input message="impl:logCheckOutRequest" name="logCheckOutRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:logCheckOutResponse" name="logCheckOutResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="isTerminalRunning">
+
+         <wsdl:input message="impl:isTerminalRunningRequest" name="isTerminalRunningRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:isTerminalRunningResponse" name="isTerminalRunningResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addCheckedPassenger">
+
+         <wsdl:input message="impl:addCheckedPassengerRequest" name="addCheckedPassengerRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:addCheckedPassengerResponse" name="addCheckedPassengerResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="startRunningTerminal">
+
+         <wsdl:input message="impl:startRunningTerminalRequest" name="startRunningTerminalRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:startRunningTerminalResponse" name="startRunningTerminalResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getCheckedPassengers">
+
+         <wsdl:input message="impl:getCheckedPassengersRequest" name="getCheckedPassengersRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getCheckedPassengersResponse" name="getCheckedPassengersResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="stopRunningTerminal">
+
+         <wsdl:input message="impl:stopRunningTerminalRequest" name="stopRunningTerminalRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:stopRunningTerminalResponse" name="stopRunningTerminalResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="isTerminalAndGatewayAvailable">
+
+         <wsdl:input message="impl:isTerminalAndGatewayAvailableRequest" name="isTerminalAndGatewayAvailableRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:isTerminalAndGatewayAvailableResponse" name="isTerminalAndGatewayAvailableResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getPassengersOnWarrants">
+
+         <wsdl:input message="impl:getPassengersOnWarrantsRequest" name="getPassengersOnWarrantsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getPassengersOnWarrantsResponse" name="getPassengersOnWarrantsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addPassengerOnWarrant">
+
+         <wsdl:input message="impl:addPassengerOnWarrantRequest" name="addPassengerOnWarrantRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:addPassengerOnWarrantResponse" name="addPassengerOnWarrantResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="CentralRegistryServiceSoapBinding" type="impl:CentralRegistryService">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="addTerminal">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addTerminalRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addTerminalResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getTerminal">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getTerminalRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getTerminalResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteTerminal">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="deleteTerminalRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="deleteTerminalResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateTerminal">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="updateTerminalRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="updateTerminalResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="logLogin">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="logLoginRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="logLoginResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="logCheckOut">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="logCheckOutRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="logCheckOutResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="isTerminalRunning">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="isTerminalRunningRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="isTerminalRunningResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addCheckedPassenger">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addCheckedPassengerRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addCheckedPassengerResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="startRunningTerminal">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="startRunningTerminalRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="startRunningTerminalResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getCheckedPassengers">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getCheckedPassengersRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getCheckedPassengersResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="stopRunningTerminal">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="stopRunningTerminalRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="stopRunningTerminalResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="isTerminalAndGatewayAvailable">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="isTerminalAndGatewayAvailableRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="isTerminalAndGatewayAvailableResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getPassengersOnWarrants">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getPassengersOnWarrantsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getPassengersOnWarrantsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addPassengerOnWarrant">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addPassengerOnWarrantRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addPassengerOnWarrantResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="CentralRegistryServiceService">
+
+      <wsdl:port binding="impl:CentralRegistryServiceSoapBinding" name="CentralRegistryService">
+
+         <wsdlsoap:address location="http://localhost:9000/CentralRegistry/services/CentralRegistryService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

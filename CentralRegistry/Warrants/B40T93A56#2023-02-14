@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="17.0.4.1" class="java.beans.XMLDecoder">
+ <object class="etf.project.model.passenger.Passenger">
+  <void property="documentNumber">
+   <string>B40T93A56</string>
+  </void>
+  <void property="lastName">
+   <string>Petrovic</string>
+  </void>
+  <void property="name">
+   <string>Petar</string>
+  </void>
+ </object>
+</java>

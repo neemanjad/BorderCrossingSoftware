@@ -1,0 +1,7 @@
+eclipse.preferences.version=1
+encoding//src/main/java/etf/project/logic/ClientAppSoapService.java=UTF-8
+encoding//src/main/java/etf/project/logic/ClientAppSoapServiceService.java=UTF-8
+encoding//src/main/java/etf/project/logic/ClientAppSoapServiceServiceLocator.java=UTF-8
+encoding//src/main/java/etf/project/logic/ClientAppSoapServiceSoapBindingStub.java=UTF-8
+encoding//src/main/java/etf/project/model/client/Client.java=UTF-8
+encoding//src/main/java/etf/project/model/container/ClientContainer.java=UTF-8

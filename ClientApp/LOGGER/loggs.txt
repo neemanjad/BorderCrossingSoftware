@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2023-02-14T09:03:15.872310200Z</date>
+  <millis>1676365395872</millis>
+  <nanos>310200</nanos>
+  <sequence>1</sequence>
+  <logger>etf.project.logic.ClientAppChatService</logger>
+  <level>WARNING</level>
+  <class>etf.project.mylogger.MyLogger</class>
+  <method>logError</method>
+  <thread>1</thread>
+  <message>java.net.ConnectException: Connection refused: connect</message>
+  <exception>
+    <message>java.net.ConnectException: Connection refused: connect</message>
+    <frame>
+      <class>sun.nio.ch.Net</class>
+      <method>connect0</method>
+    </frame>
+    <frame>
+      <class>sun.nio.ch.Net</class>
+      <method>connect</method>
+      <line>579</line>
+    </frame>
+    <frame>
+      <class>sun.nio.ch.Net</class>
+      <method>connect</method>
+      <line>568</line>
+    </frame>
+    <frame>
+      <class>sun.nio.ch.NioSocketImpl</class>
+      <method>connect</method>
+      <line>588</line>
+    </frame>
+    <frame>
+      <class>java.net.SocksSocketImpl</class>
+      <method>connect</method>
+      <line>327</line>
+    </frame>
+    <frame>
+      <class>java.net.Socket</class>
+      <method>connect</method>
+      <line>633</line>
+    </frame>
+    <frame>
+      <class>sun.security.ssl.SSLSocketImpl</class>
+      <method>connect</method>
+      <line>304</line>
+    </frame>
+    <frame>
+      <class>sun.security.ssl.SSLSocketImpl</class>
+      <method>&lt;init&gt;</method>
+      <line>163</line>
+    </frame>
+    <frame>
+      <class>sun.security.ssl.SSLSocketFactoryImpl</class>
+      <method>createSocket</method>
+      <line>88</line>
+    </frame>
+    <frame>
+      <class>etf.project.logic.ClientAppChatService</class>
+      <method>init</method>
+      <line>433</line>
+    </frame>
+    <frame>
+      <class>etf.project.logic.ClientAppChatService</class>
+      <method>signUpForChat</method>
+      <line>61</line>
+    </frame>
+    <frame>
+      <class>etf.project.mainapp.MainApp</class>
+      <method>main</method>
+      <line>94</line>
+    </frame>
+  </exception>
+</record>
+</log>
