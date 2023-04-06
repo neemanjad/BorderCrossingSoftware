@@ -3,3 +3,4 @@ Software that stores information about travelers crossing the border, wanted per
 Technologies: Java, H2 InMemory DataBase, REST api, SOAP api, TOMCAT.
 
 @author NemanjaDavidovic
+@date Februar, 2022.
